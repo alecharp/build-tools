@@ -1,3 +1,3 @@
 #!groovy
 
-buildDockerImg 'alecharp/java-build-tools'
+buildDockerImg 'alecharp/maven-build-tools'
