@@ -9,7 +9,9 @@ RUN apt-get update \
   && apt-get install -y \
     curl \
     git \
-    gpg
+    gpg \
+    bzip2 \
+    xz-utils
 
 ENV NODE_VERSION 8.4.0
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
@@ -21,9 +23,9 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
     armhf) ARCH='armv7l';; \
     *) echo "unsupported architecture"; exit 1 ;; \
   esac \
-  && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.gz" \
-  && tar xf "node-v$NODE_VERSION-linux-$ARCH.tar.gz" -C /usr/local --strip-components=1 \
-  && rm "node-v$NODE_VERSION-linux-$ARCH.tar.gz" \
+  && curl -SLO "https://nodejs.org/dist/v$NODE_VERSION/node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
+  && tar xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 \
+  && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
   && chmod +x /usr/local/bin/node
 
