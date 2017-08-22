@@ -1,15 +1,12 @@
-FROM ubuntu:16.04
+FROM alpine:3.6
 MAINTAINER Adrien Lecharpentier <me@alecharp.fr>
 
-RUN apt-get update \
-  && apt-get -y upgrade
+RUN addgroup -g 1000 build && \
+  adduser -D -u 1000 -G build build
 
-RUN groupadd -g 1000 build && \
-  useradd -u 1000 -g 1000 -m -s /bin/bash build
-
-RUN apt-get install -y \
+RUN apk --update add \
   curl \
-  openjdk-8-jdk \
+  openjdk8 \
   git
 
 ENV MAVEN_VERSION 3.5.0
