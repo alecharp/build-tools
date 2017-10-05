@@ -7,6 +7,7 @@ RUN groupadd -g 1000 build && \
 RUN apt-get update \
   && apt-get upgrade -y \
   && apt-get install -y \
+    openjdk-8-jre-headless \
     curl \
     git \
     gpg \
