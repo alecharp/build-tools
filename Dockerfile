@@ -13,7 +13,7 @@ RUN apt-get update \
     bzip2 \
     xz-utils
 
-ENV NODE_VERSION 8.4.0
+ENV NODE_VERSION 8.6.0
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
