@@ -1,4 +1,4 @@
-FROM docker:17.09
+FROM docker:17.11
 MAINTAINER Adrien Lecharpentier <adrien.lecharpentier@gmail.com>
 
 # Prepare image to be used as Jenkins Agent
