@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 MAINTAINER Adrien Lecharpentier <me@alecharp.fr>
 
 RUN groupadd -g 1000 build && \
@@ -12,9 +12,10 @@ RUN apt-get update \
     git \
     gpg \
     bzip2 \
-    xz-utils
+    xz-utils \
+    make
 
-ENV NODE_VERSION 8.6.0
+ARG NODE_VERSION=9.4.0
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
