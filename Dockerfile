@@ -5,7 +5,8 @@ MAINTAINER Adrien Lecharpentier <adrien.lecharpentier@gmail.com>
 ENV JRE_VERSION=8.131.11-r2
 RUN apk --update --no-cache add \
   openjdk8-jre=$JRE_VERSION \
-  git
+  git \
+  make
 
 # Install AWS cli
 RUN apk --update --no-cache add \
