@@ -15,7 +15,7 @@ RUN apt-get update \
     xz-utils \
     make
 
-ARG NODE_VERSION=9.4.0
+ARG NODE_VERSION=9.8.0
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && case "${dpkgArch##*-}" in \
     amd64) ARCH='x64';; \
@@ -29,7 +29,8 @@ RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
   && tar xJf "node-v$NODE_VERSION-linux-$ARCH.tar.xz" -C /usr/local --strip-components=1 \
   && rm "node-v$NODE_VERSION-linux-$ARCH.tar.xz" \
   && ln -s /usr/local/bin/node /usr/local/bin/nodejs \
-  && chmod +x /usr/local/bin/node
+  && chmod +x /usr/local/bin/node \
+  && npm install npm@5.7.0 -g
 
 USER build
 WORKDIR /home/build
